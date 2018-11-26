@@ -14,11 +14,11 @@ class Drive
 {
   public:
     Drive(int IN1, int IN2, int IN3, int IN4);
-    void moveForward();
-    void moveBackward();
-    void turnRight();
-    void turnLeft();
-    void stopMoving();
+    bool moveForward(int speed);
+    bool moveBackward(int speed);
+    bool turnRight(int speed);
+    bool turnLeft(int speed);
+    bool stopMoving();
   private:
 	int _IN1;
 	int	_IN2;

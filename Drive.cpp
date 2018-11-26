@@ -8,6 +8,8 @@
 #include "Arduino.h"
 #include "Drive.h"
 
+#define LOW 0
+
 Drive::Drive(int IN1, int IN2, int IN3, int IN4)
 {
   pinMode(IN1, OUTPUT);  
@@ -20,42 +22,47 @@ Drive::Drive(int IN1, int IN2, int IN3, int IN4)
   _IN4 = IN4;
 }
 
-void Drive::moveForward()
+bool Drive::moveForward(int speed)
 {
-  digitalWrite(_IN1, HIGH);
-  digitalWrite(_IN2, LOW);
-  digitalWrite(_IN3, HIGH);
-  digitalWrite(_IN4, LOW);  
+  analogWrite(_IN1, speed);
+  analogWrite(_IN2, LOW);
+  analogWrite(_IN3, speed);
+  analogWrite(_IN4, LOW);  
+  return true;
 }
 
-void Drive::moveBackward()
+bool Drive::moveBackward(int speed)
 {
-  digitalWrite(_IN1, LOW);
-  digitalWrite(_IN2, HIGH);
-  digitalWrite(_IN3, LOW);
-  digitalWrite(_IN4, HIGH);  
+  analogWrite(_IN1, LOW);
+  analogWrite(_IN2, speed);
+  analogWrite(_IN3, LOW);
+  analogWrite(_IN4, speed); 
+  return true;
 }
 
-void Drive::turnRight()
+bool Drive::turnLeft(int speed)
 {
-  digitalWrite(_IN1, HIGH);
-  digitalWrite(_IN2, LOW);
-  digitalWrite(_IN3, LOW);
-  digitalWrite(_IN4, HIGH);  
+  analogWrite(_IN1, speed);
+  analogWrite(_IN2, LOW);
+  analogWrite(_IN3, LOW);
+  analogWrite(_IN4, speed);
+  return true;
 }
 
-void Drive::turnLeft()
+bool Drive::turnRight(int speed)
 {
-  digitalWrite(_IN1, LOW);
-  digitalWrite(_IN2, HIGH);
-  digitalWrite(_IN3, HIGH);
-  digitalWrite(_IN4, LOW);  
+  analogWrite(_IN1, LOW);
+  analogWrite(_IN2, speed);
+  analogWrite(_IN3, speed);
+  analogWrite(_IN4, LOW);
+  return true;  
 }
 
-void Drive::stopMoving()
+bool Drive::stopMoving()
 {
-  digitalWrite(_IN1, LOW);
-  digitalWrite(_IN2, LOW);
-  digitalWrite(_IN3, LOW);
-  digitalWrite(_IN4, LOW);  
+  analogWrite(_IN1, LOW);
+  analogWrite(_IN2, LOW);
+  analogWrite(_IN3, LOW);
+  analogWrite(_IN4, LOW); 
+  return true;  
 }

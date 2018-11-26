@@ -28,12 +28,12 @@ void setup() {
 }
 
 void loop() {
-  drive.moveForward();
+  drive.moveForward(500);
   delay(3000);
-  drive.moveBackward();
+  drive.moveBackward(500);
   delay(3000);
-  drive.turnRight();
+  drive.turnRight(500);
   delay(3000);
-  drive.turnLeft();
+  drive.turnLeft(500);
   delay(3000);
 }
